@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Florida Gift Decision Tool</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+        max-width: 600px;
+        margin: auto;
+      }
+
+      .step {
+        display: none;
+      }
+
+      .active {
+        display: block;
+      }
+
+      button {
+        margin: 10px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Local Government Gift Decision Tool</h1>
+    <div id="step1" class="step active">
+      <p>Was the gift given to influence official action?</p>
+      <button onclick="nextStep('deny1')">Yes</button>
+      <button onclick="nextStep('step2')">No</button>
+    </div>
+
+    <div id="step2" class="step">
+      <p>Does agency policy allow it?</p>
+      <button onclick="nextStep('step3')">Yes</button>
+      <button onclick="nextStep('deny2')">No</button>
+    </div>
+
+    <div id="step3" class="step">
+      <p>Is the recipient a reporting individual?</p>
+      <button onclick="nextStep('step4')">Yes</button>
+      <button onclick="nextStep('allow1')">No</button>
+    </div>
+
+    <div id="allow1" class="step">
+      <p>✅ You may accept the gift. No disclosure required.</p>
+    </div>
+
+    <div id="deny1" class="step">
+      <p>❌ You cannot accept the gift. (§112.3148(3), F.S.)</p>
+    </div>
+
+    <div id="deny2" class="step">
+      <p>❌ Cannot accept. (§112.313(2) or (4), F.S.)</p>
+    </div>
+
+    <!-- Add more steps as needed -->
+
+    <script>
+      function nextStep(id) {
+        document.querySelectorAll('.step').forEach(div => div.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+      }
+    </script>
+  </body>
+
+</html>
